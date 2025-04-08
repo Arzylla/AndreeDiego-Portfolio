@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="admin-section py-5">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="h2">Admin Dashboard</h1>
+            <a href="{{ url_for('index') }}" class="btn btn-outline-danger">
+                <i class="fas fa-sign-out-alt me-2"></i>Logout
+            </a>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h2 class="h4 mb-4">Add New Project</h2>
+                        <form action="{{ url_for('add_project') }}" method="POST">
+                            <div class="mb-3">
+                                <label for="title" class="form-label">Project Title</label>
+                                <input type="text" class="form-control" id="title" name="title" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="description" class="form-label">Description</label>
+                                <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="image_url" class="form-label">Image URL</label>
+                                <input type="url" class="form-control" id="image_url" name="image_url">
+                            </div>
+                            <div class="mb-3">
+                                <label for="project_url" class="form-label">Project URL</label>
+                                <input type="url" class="form-control" id="project_url" name="project_url">
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-plus me-2"></i>Add Project
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h2 class="h4 mb-4">Existing Projects</h2>
+                        {% if projects %}
+                        <div class="list-group">
+                            {% for project in projects %}
+                            <div class="list-group-item">
+                                <h5 class="mb-1">{{ project.title }}</h5>
+                                <p class="mb-1 text-muted small">{{ project.description[:100] }}...</p>
+                                <div class="btn-group btn-group-sm">
+                                    <a href="{{ url_for('edit_project', id=project.id) }}" class="btn btn-outline-primary">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <a href="{{ url_for('delete_project', id=project.id) }}" class="btn btn-outline-danger" onclick="return confirm('Are you sure?')">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        <p class="text-muted">No projects added yet.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

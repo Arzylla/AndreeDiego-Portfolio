@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero vh-100 d-flex align-items-center">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold mb-4">Hi, I'm Andree Diego</h1>
+                <h2 class="h3 mb-4 text-muted">Software Engineering Student</h2>
+                <p class="lead mb-4">Passionate about creating innovative solutions and learning new technologies. Currently pursuing my degree in Software Engineering.</p>
+                <div class="d-flex gap-3">
+                    <a href="{{ url_for('portfolio') }}" class="btn btn-primary btn-lg">View My Work</a>
+                    <a href="{{ url_for('contact') }}" class="btn btn-outline-dark btn-lg">Get in Touch</a>
+                </div>
+            </div>
+            <div class="col-lg-6 mt-5 mt-lg-0">
+                <div class="tech-stack text-center">
+                    <h3 class="h4 mb-4">Tech Stack</h3>
+                    <div class="row g-4">
+                        <div class="col-4">
+                            <i class="fab fa-python fa-3x mb-2"></i>
+                            <p>Python</p>
+                        </div>
+                        <div class="col-4">
+                            <i class="fab fa-js fa-3x mb-2"></i>
+                            <p>JavaScript</p>
+                        </div>
+                        <div class="col-4">
+                            <i class="fab fa-html5 fa-3x mb-2"></i>
+                            <p>HTML5</p>
+                        </div>
+                        <div class="col-4">
+                            <i class="fab fa-css3-alt fa-3x mb-2"></i>
+                            <p>CSS3</p>
+                        </div>
+                        <div class="col-4">
+                            <i class="fab fa-git-alt fa-3x mb-2"></i>
+                            <p>Git</p>
+                        </div>
+                        <div class="col-4">
+                            <i class="fas fa-database fa-3x mb-2"></i>
+                            <p>SQL</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="featured-projects py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Featured Projects</h2>
+        <div class="row g-4" id="featured-projects">
+            <!-- Projects will be dynamically loaded here -->
+        </div>
+    </div>
+</section>
+{% endblock %}
